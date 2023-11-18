@@ -1,4 +1,4 @@
 - name: Include job.yml and jobs.yml files
   ansible.builtin.include_tasks:
     file: job.yml
-  loop: jobs
+  loop: "{{jobs}}"
