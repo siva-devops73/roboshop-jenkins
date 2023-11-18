@@ -1,0 +1,5 @@
+- name: Create Jenkins Job
+  hosts: localhost
+  connection: local
+  roles:
+    - jenkins-jobs
