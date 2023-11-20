@@ -5,6 +5,11 @@
     jobs:
       - roboshop-terraform
       - cart
+      - catalogue
+      - user
+      - shipping
+      - payment
+      - frontend
       - dispatch
   roles:
     - jenkins-jobs
