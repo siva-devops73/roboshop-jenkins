@@ -6,5 +6,5 @@
 - name: Multi Branch Pipeline Setup
   ansible.builtin.include_tasks:
     file: mp_job.yml
-  loop: "{{sp_jobs}}"
+  loop: "{{mp_jobs}}"
 
