@@ -1,0 +1,13 @@
+- name: Setup Template
+  ansible.builtin.template:
+    src: mp_branch.xml
+    dest: /tmp/mp_branch.xml
+
+
+- name: Create a jenkins job using basic authentication
+  community.general.jenkins_job:
+    config: "{{ lookup('file', '/tmp/mp_branch.xml') }}"
+    name: "{{item}}"
+    password: admin123
+    url: http://172.31.85.130:8080
+    user: admin
