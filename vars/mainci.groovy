@@ -1,17 +1,21 @@
 def call() {
     node('workstation') {
 
-        if (env.cibuild == "java") {
+        if(env.cibuild == "java") {
             stage('Build') {
                 sh 'mvn package'
-            }elseif (env.cibuild == "nodejs") {
-                stage('Build') {
-                    sh 'npm install'
-                }elseif {
-                    sh 'skip build'
-                }
             }
         }
+        else if(env.cibuild == "nodejs") {
+            stage('Build') {
+                sh 'npm install'
+                }
+        }
+        else {
+            sh 'skip build'
+        }
+
+
 
         stage('Unit Tests') {
             echo 'Unit Tests'
