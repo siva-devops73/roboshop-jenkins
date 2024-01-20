@@ -27,7 +27,8 @@ def call() {
         }
         if(env.cibuild == "golang") {
             stage('Build') {
-                sh 'go install'
+                sh 'go get'
+                sh 'go build'
             }
         }
 
