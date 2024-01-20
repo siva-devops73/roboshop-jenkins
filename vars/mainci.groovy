@@ -25,6 +25,11 @@ def call() {
                 sh 'npm install'
             }
         }
+        if(env.cibuild == "golang") {
+            stage('Build') {
+                sh 'go install'
+            }
+        }
 
 
         stage('Unit Tests') {
