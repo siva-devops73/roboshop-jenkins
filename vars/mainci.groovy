@@ -2,6 +2,9 @@ def call() {
     node('workstation') {
 
         stage('code checkout') {
+
+            sh 'find . | grep "^./" |xargs rm -rf'
+
             if(env.TAG_NAME ==~ ".*") {
                 env.gitbrname = "refs/tags/${env.TAG_NAME}"
             } else {
