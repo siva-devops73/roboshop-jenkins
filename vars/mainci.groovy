@@ -17,7 +17,7 @@ def call() {
 
         if(env.cibuild == "java") {
             stage('Build') {
-                sh 'mvn package'
+                sh 'mvn package ; mv target/${env.component}-1.0.jar ${env.component}.jar'
             }
         }
         if(env.cibuild == "nodejs") {
