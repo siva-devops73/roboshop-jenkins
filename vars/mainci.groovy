@@ -6,15 +6,11 @@ def call() {
                 sh 'mvn package'
             }
         }
-        else if(env.cibuild == "nodejs") {
+        if(env.cibuild == "nodejs") {
             stage('Build') {
                 sh 'npm install'
-                }
+            }
         }
-        else {
-            sh 'skip build'
-        }
-
 
 
         stage('Unit Tests') {
