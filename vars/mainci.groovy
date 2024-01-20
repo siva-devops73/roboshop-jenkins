@@ -6,12 +6,6 @@ def call() {
                 sh 'mvn package'
             }
         }
-        if(env.cibuild == "golang") {
-            stage('Build') {
-                sh 'go install'
-            }
-        }
-
 
         stage('Unit Tests') {
             echo 'Unit Tests'
