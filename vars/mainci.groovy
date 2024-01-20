@@ -9,6 +9,7 @@ def call() {
 
         stage('Unit Tests') {
             echo 'Unit Tests'
+            sh 'ls -ltr'
         }
 
         stage('Code Analysis') {
