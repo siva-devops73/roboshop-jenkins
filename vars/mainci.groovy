@@ -2,7 +2,8 @@ def call() {
     node('workstation') {
 
         stage('code checkout') {
-            sh 'rm -rf *'
+            sh 'env'
+            sh 'find . | grep "^./" |xargs rm -rf'
             git branch: 'main', url: 'https://github.com/siva-devops73/frontend'
         }
 
