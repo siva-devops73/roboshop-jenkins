@@ -6,11 +6,12 @@ def call() {
                 sh 'mvn package'
             }
         }
-       // if(env.cibuild == "nodejs") {
-       //     stage('Build') {
-        //        sh 'npm install'
-       //     }
-       // }
+        if(env.cibuild == "golang") {
+            stage('Build') {
+                sh 'go get'
+                sh 'go build'
+            }
+        }
 
 
         stage('Unit Tests') {
