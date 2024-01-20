@@ -19,6 +19,8 @@ def call() {
             stage('Build') {
                 sh 'mvn package'
             }
+        } else {
+            sh 'npm install'
         }
 
         stage('Unit Tests') {
