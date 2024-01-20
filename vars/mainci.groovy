@@ -2,10 +2,15 @@ def call() {
     node('workstation') {
 
         stage('code checkout') {
-            sh 'env'
-            sh 'find . | grep "^./" |xargs rm -rf'
-            git branch: 'main', url: 'https://github.com/siva-devops73/frontend'
+            if(env.TAG_NAME ==~ ".*") {
+                env.gitbrname = "refs/tags/${env.TAG_NAME}"
+            } else {
+                env.gitbrname = "refs/tags/${env.BRANCH_NAME}"
+            }
+            checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/siva-devops73/${envcomponent}']], branches: [[name: gitbrname]]], poll: false
+
         }
+
 
         if(env.cibuild == "java") {
             stage('Build') {
