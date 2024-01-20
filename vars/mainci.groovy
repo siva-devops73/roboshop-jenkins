@@ -27,7 +27,9 @@ def call() {
         }
         if(env.cibuild == "golang") {
             stage('Build') {
-               sh 'go get'
+                sh 'go mod init dispatch'
+                sh 'go get'
+                sh 'go build'
             }
         }
 
