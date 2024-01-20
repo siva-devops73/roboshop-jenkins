@@ -17,7 +17,7 @@ def call() {
 
         if(env.cibuild == "java") {
             stage('Build') {
-                sh 'mvn clean package'
+                sh 'mvn package'
             }
         }
         if(env.cibuild == "nodejs") {
