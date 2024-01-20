@@ -22,7 +22,7 @@ def call() {
         }
         if(env.cibuild == "nodejs") {
             stage('Build') {
-                sh 'mvn package'
+                sh 'npm install'
             }
         }
 
