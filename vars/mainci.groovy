@@ -66,6 +66,14 @@ def call() {
             sh 'docker build -t ${component} .'
         }
 
+        if(env.TAG_NAME ==~ ".*") {
+            stage('Publish A Article') {
+                sh 'docker tag ${component} 904827379241.dkr.ecr.us-east-1.amazonaws.com/${component}:${TAG_NAME}'
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 904827379241.dkr.ecr.us-east-1.amazonaws.com'
+                sh 'docker push 904827379241.dkr.ecr.us-east-1.amazonaws.com/${component}:${TAG_NAME}'
+            }
+        }
+
     }
 
 }
