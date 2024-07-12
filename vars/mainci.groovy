@@ -48,19 +48,18 @@ def call() {
             echo 'Security Scans'
         }
 
-
-        if(env.TAG_NAME ==~ ".*") {
-            stage('Publish A Article') {
-                if(env.cibuild == "java") {
-                     sh 'mv target/${component}-1.0.jar ${component}.jar'
-                     sh 'rm -rf pom.xml src target'
-                    }
-                sh 'rm -f Jenkinsfile'
-                sh 'echo ${TAG_NAME} > VERSION'
-                sh 'zip -r ${component}-${TAG_NAME}.zip *'
-                sh 'curl -v -u admin:admin123 --upload-file ${component}-${TAG_NAME}.zip http://172.31.6.181:8081/repository/${component}/${component}-${TAG_NAME}.zip'
-            }
-        }
+//        if(env.TAG_NAME ==~ ".*") {
+//            stage('Publish A Article') {
+//                if(env.cibuild == "java") {
+//                     sh 'mv target/${component}-1.0.jar ${component}.jar'
+//                     sh 'rm -rf pom.xml src target'
+//                    }
+//                sh 'rm -f Jenkinsfile'
+//                sh 'echo ${TAG_NAME} > VERSION'
+//                sh 'zip -r ${component}-${TAG_NAME}.zip *'
+//                sh 'curl -v -u admin:admin123 --upload-file ${component}-${TAG_NAME}.zip http://172.31.6.181:8081/repository/${component}/${component}-${TAG_NAME}.zip'
+//            }
+//        }
 
         stage('Docker Build') {
             sh 'docker build -t ${component} .'
