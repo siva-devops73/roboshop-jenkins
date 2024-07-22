@@ -14,5 +14,6 @@
       - payment
       - frontend
       - dispatch
+      - aws-parameter-init-container
   roles:
     - jenkins-jobs
