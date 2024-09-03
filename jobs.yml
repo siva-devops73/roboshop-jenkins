@@ -16,5 +16,6 @@
       - dispatch
       - aws-parameter-init-container
       - schema-load-init-container
+      - test
   roles:
     - jenkins-jobs
